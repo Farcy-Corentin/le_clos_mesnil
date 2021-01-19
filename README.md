@@ -1,4 +1,3 @@
-# le_clos_mesnil
 
 
 1- Définir la base de donnée
@@ -40,10 +39,10 @@ Gérer les vue
 
 5- Création de la maquette (pages, système de réservation, authentification)
 
-6- Développer l'application web
+6- Développer l'application web:
 
-6.0.1 - consulter les réservations
-6.0.2 - saisir de nouvelles réservations
+ consulter les réservations
+ saisir de nouvelles réservations
 
 
 6-1 Création des pages web statiques
@@ -62,9 +61,9 @@ Gérer les vue
 
 7.1.1 création de l'interface pour ajouter,modifier,supprimer des réservations
 
-7.1.2 misse en place du framework MVC  
+7.1.2 mise en place du framework MVC  
 
-8- Développer la 
+8- Développer la stratégie S.E.O
 
 8.1 Optimiser les pages web pour le référencement:
 balises meta
