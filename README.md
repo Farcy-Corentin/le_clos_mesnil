@@ -1,17 +1,19 @@
+# Le clos mesnil
 
+Le clos mesnil est un gîte, il souhaite développer leur propres système de réservation et développer un système de blog pour promouvoir les activités aux alentour. 
 
 1- Définir la base de donnée
 
-1.1 Dictionnaire de donné
+    1.1 Dictionnaire de donné
 
-1.2 MCD
+    1.2 MCD
 
-1.3 Script création de base de donnée
+    1.3 Script création de base de donnée
 
 1.4  Définition des rôles:
-Profil visiteur: lecture sur reservation
-Profil client:  lecture sur toute la base  (insertion et mise à jour dans table client et  réservation)
-Profil admininstrateur:  lecture/écriture/mise à jour/supprimer
+        Profil visiteur: lecture sur reservation
+        Profil client:  lecture sur toute la base  (insertion et mise à jour dans table client et  réservation)
+        Profil admininstrateur:  lecture/écriture/mise à jour/supprimer
 
 1.5  Création du script pour alimenter la base de test
 
@@ -37,35 +39,9 @@ Gérer les vue
 
 4.1 Création de la vue correspondant à la jointure client réservation 
 
-5- Création de la maquette (pages, système de réservation, authentification)
+5- Développer la stratégie S.E.O
 
-6- Développer l'application web:
-
- consulter les réservations
- saisir de nouvelles réservations
-
-
-6-1 Création des pages web statiques
-
-6.1.1 partie public du site page d'accueil avec système de géolocalisation,  un accès à la liste des réservations, accès au formulaire d'inscription, accès au différents articles du blog.
-
-6.1.2 partie privée du site gestion des réservation,création des articles de blog, gestion des produits à commander pour le gîte
-
-6.2 création du formulaire d'inscription 
-
-6.2.1 contrôle de saisie du formulaire d'inscription
-
-7- Développer des composant d'accès aux données
-
-7.1 mise en place du CRUD sur la table reservation 
-
-7.1.1 création de l'interface pour ajouter,modifier,supprimer des réservations
-
-7.1.2 mise en place du framework MVC  
-
-8- Développer la stratégie S.E.O
-
-8.1 Optimiser les pages web pour le référencement:
+5.1 Optimiser les pages web pour le référencement:
 balises meta
 robot.txt
 plan du site, sitmap.xml
@@ -76,10 +52,40 @@ mise en place du design responsive
 multilingue 
 page error 404
 
-7 - Publier l'application
+6 - Publier l'application
 
-7.1 -choix du nom de domaine 
-7.2 -hébergement du site
+6.1 -choix du nom de domaine
+
+6.2 -hébergement du site
+
+
+7- Création de la maquette (pages, système de réservation, authentification)
+
+8- Développer l'application web:
+
+ consulter les réservations
+ saisir de nouvelles réservations
+
+
+8-1 Création des pages web statiques
+
+8.1.1 partie public du site page d'accueil avec système de géolocalisation,  un accès à la liste des réservations, accès au formulaire d'inscription, accès au différents articles du blog.
+
+8.1.2 partie privée du site gestion des réservation,création des articles de blog, gestion des produits à commander pour le gîte
+
+8.2 création du formulaire d'inscription 
+
+8.2.1 contrôle de saisie du formulaire d'inscription
+
+9- Développer des composant d'accès aux données
+
+9.1 mise en place du CRUD sur la table reservation 
+
+9.1.1 création de l'interface pour ajouter,modifier,supprimer des réservations
+
+9.1.2 mise en place du framework MVC  
+
+
 
 
 
