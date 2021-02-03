@@ -15,7 +15,7 @@ class Reservation
      * @ORM\GeneratedValue
      * @ORM\Column(type="bigint")
      */
-    private $res_id;
+    private $id;
 
     /**
      * @ORM\Column(type="datetime")
@@ -54,10 +54,15 @@ class Reservation
      */
     private $season;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Commentreservation::class, mappedBy="reservation", cascade={"persist", "remove"})
+     */
+    private $commentReservation;
+
 
     public function getId(): ?int
     {
-        return $this->res_id;
+        return $this->id;
     }
 
     public function getResDate(): ?\DateTimeInterface
@@ -140,6 +145,23 @@ class Reservation
     public function setSeason(?season $season): self
     {
         $this->season = $season;
+
+        return $this;
+    }
+
+    public function getCommentReservation(): ?Commentreservation
+    {
+        return $this->commentReservation;
+    }
+
+    public function setCommentReservation(Commentreservation $commentReservation): self
+    {
+        // set the owning side of the relation if necessary
+        if ($commentReservation->getReservation() !== $this) {
+            $commentReservation->setReservation($this);
+        }
+
+        $this->commentReservation = $commentReservation;
 
         return $this;
     }

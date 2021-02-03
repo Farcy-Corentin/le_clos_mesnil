@@ -30,15 +30,15 @@ class Room
     private $rou_picture;
 
     /**
-     * @ORM\ManyToOne(targetEntity=gite::class, inversedBy="room")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $gite;
-
-    /**
      * @ORM\ManyToMany(targetEntity=Equipment::class, mappedBy="room")
      */
     private $equipment;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=gite::class, inversedBy="rooms")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $gite;
 
     public function __construct()
     {
@@ -74,18 +74,6 @@ class Room
         return $this;
     }
 
-    public function getGite(): ?gite
-    {
-        return $this->gite;
-    }
-
-    public function setGite(?gite $gite): self
-    {
-        $this->gite = $gite;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Equipment[]
      */
@@ -109,6 +97,18 @@ class Room
         if ($this->equipment->removeElement($equipment)) {
             $equipment->removeRoom($this);
         }
+
+        return $this;
+    }
+
+    public function getGite(): ?gite
+    {
+        return $this->gite;
+    }
+
+    public function setGite(?gite $gite): self
+    {
+        $this->gite = $gite;
 
         return $this;
     }

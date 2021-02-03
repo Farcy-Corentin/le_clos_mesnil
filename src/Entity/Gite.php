@@ -50,13 +50,19 @@ class Gite
     private $git_mail;
 
     /**
+     * @ORM\OneToMany(targetEntity=Rule::class, mappedBy="gite")
+     */
+    private $rule;
+
+    /**
      * @ORM\OneToMany(targetEntity=Room::class, mappedBy="gite")
      */
-    private $room;
+    private $rooms;
 
     public function __construct()
     {
-        $this->room = new ArrayCollection();
+        $this->rule = new ArrayCollection();
+        $this->rooms = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -136,18 +142,50 @@ class Gite
         return $this;
     }
 
+
+
+    /**
+     * @return Collection|Rule[]
+     */
+    public function getRule(): Collection
+    {
+        return $this->rule;
+    }
+
+    public function addRule(Rule $rule): self
+    {
+        if (!$this->rule->contains($rule)) {
+            $this->rule[] = $rule;
+            $rule->setGite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRule(Rule $rule): self
+    {
+        if ($this->rule->removeElement($rule)) {
+            // set the owning side to null (unless already changed)
+            if ($rule->getGite() === $this) {
+                $rule->setGite(null);
+            }
+        }
+
+        return $this;
+    }
+
     /**
      * @return Collection|Room[]
      */
-    public function getRoom(): Collection
+    public function getRooms(): Collection
     {
-        return $this->room;
+        return $this->rooms;
     }
 
     public function addRoom(Room $room): self
     {
-        if (!$this->room->contains($room)) {
-            $this->room[] = $room;
+        if (!$this->rooms->contains($room)) {
+            $this->rooms[] = $room;
             $room->setGite($this);
         }
 
@@ -156,7 +194,7 @@ class Gite
 
     public function removeRoom(Room $room): self
     {
-        if ($this->room->removeElement($room)) {
+        if ($this->rooms->removeElement($room)) {
             // set the owning side to null (unless already changed)
             if ($room->getGite() === $this) {
                 $room->setGite(null);

@@ -34,6 +34,16 @@ class Equipment
      */
     private $room;
 
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $equ_english_name;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $equ_english_description;
+
     public function __construct()
     {
         $this->room = new ArrayCollection();
@@ -88,6 +98,30 @@ class Equipment
     public function removeRoom(room $room): self
     {
         $this->room->removeElement($room);
+
+        return $this;
+    }
+
+    public function getEquEnglishName(): ?string
+    {
+        return $this->equ_english_name;
+    }
+
+    public function setEquEnglishName(string $equ_english_name): self
+    {
+        $this->equ_english_name = $equ_english_name;
+
+        return $this;
+    }
+
+    public function getEquEnglishDescription(): ?string
+    {
+        return $this->equ_english_description;
+    }
+
+    public function setEquEnglishDescription(string $equ_english_description): self
+    {
+        $this->equ_english_description = $equ_english_description;
 
         return $this;
     }

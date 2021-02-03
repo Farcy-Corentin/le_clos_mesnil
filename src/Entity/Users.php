@@ -17,7 +17,7 @@ class Users
      * @ORM\GeneratedValue
      * @ORM\Column(type="bigint")
      */
-    private $use_id;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -65,15 +65,31 @@ class Users
      */
     private $reservations;
 
+    /**
+     * @ORM\OneToMany(targetEntity=CommentPost::class, mappedBy="user")
+     */
+    private $commentPost;
+
+    /**
+     * @ORM\Column(type="string", length=200)
+     */
+    private $use_url;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $use_ip;
+
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
+        $this->commentPost = new ArrayCollection();
     }
 
 
     public function getUseId(): ?string
     {
-        return $this->use_id;
+        return $this->id;
     }
 
     public function getUneLastName(): ?string
@@ -198,6 +214,60 @@ class Users
                 $reservation->setUsers(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CommentPost[]
+     */
+    public function getCommentPost(): Collection
+    {
+        return $this->commentPost;
+    }
+
+    public function addCommentPost(CommentPost $commentPost): self
+    {
+        if (!$this->commentPost->contains($commentPost)) {
+            $this->commentPost[] = $commentPost;
+            $commentPost->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentPost(CommentPost $commentPost): self
+    {
+        if ($this->commentPost->removeElement($commentPost)) {
+            // set the owning side to null (unless already changed)
+            if ($commentPost->getUser() === $this) {
+                $commentPost->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getUseUrl(): ?string
+    {
+        return $this->use_url;
+    }
+
+    public function setUseUrl(string $use_url): self
+    {
+        $this->use_url = $use_url;
+
+        return $this;
+    }
+
+    public function getUseIp(): ?string
+    {
+        return $this->use_ip;
+    }
+
+    public function setUseIp(string $use_ip): self
+    {
+        $this->use_ip = $use_ip;
 
         return $this;
     }

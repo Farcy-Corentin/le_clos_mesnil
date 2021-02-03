@@ -16,7 +16,7 @@ class Country
      * @ORM\Id
      * @ORM\Column(type="string", length=2)
      */
-    private $cou_id;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=45)
@@ -35,7 +35,7 @@ class Country
 
     public function getId(): ?int
     {
-        return $this->cou_id;
+        return $this->id;
     }
 
     public function getCouName(): ?string
