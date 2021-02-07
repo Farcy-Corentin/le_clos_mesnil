@@ -35,10 +35,10 @@ class Room
     private $equipment;
 
     /**
-     * @ORM\ManyToOne(targetEntity=gite::class, inversedBy="rooms")
+     * @ORM\ManyToOne(targetEntity=Gite::class, inversedBy="rooms")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $gite;
+    private ?gite $gite;
 
     public function __construct()
     {
@@ -75,7 +75,7 @@ class Room
     }
 
     /**
-     * @return Collection|Equipment[]
+     * @return Collection
      */
     public function getEquipment(): Collection
     {

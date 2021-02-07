@@ -22,63 +22,63 @@ class Users
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $use_last_name;
+    private ?string $use_last_name;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $use_first_name;
+    private ?string $use_first_name;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $use_mail;
+    private ?string $use_mail;
 
     /**
      * @ORM\Column(type="string", length=10)
      */
-    private $use_phone;
+    private ?string $use_phone;
 
     /**
      * @ORM\Column(type="string", length=60)
      */
-    private $use_password;
+    private ?string $use_password;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $use_add_date;
+    private ?\DateTimeInterface $use_add_date;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $use_update_date;
+    private ?\DateTimeInterface $use_update_date;
 
     /**
-     * @ORM\ManyToOne(targetEntity=country::class, inversedBy="users")
+     * @ORM\ManyToOne(targetEntity=Country::class, inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $country;
+    private ?country $country;
 
     /**
      * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="users")
      */
-    private $reservations;
+    private ArrayCollection $reservations;
 
     /**
      * @ORM\OneToMany(targetEntity=CommentPost::class, mappedBy="user")
      */
-    private $commentPost;
+    private ArrayCollection $commentPost;
 
     /**
      * @ORM\Column(type="string", length=200)
      */
-    private $use_url;
+    private ?string $use_url;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $use_ip;
+    private ?string $use_ip;
 
     public function __construct()
     {
@@ -92,12 +92,12 @@ class Users
         return $this->id;
     }
 
-    public function getUneLastName(): ?string
+    public function getUseLastName(): ?string
     {
         return $this->use_last_name;
     }
 
-    public function setUneLastName(string $use_last_name): self
+    public function setUseLastName(string $use_last_name): self
     {
         $this->use_last_name = $use_last_name;
 

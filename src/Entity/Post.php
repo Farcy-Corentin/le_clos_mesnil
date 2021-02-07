@@ -17,58 +17,53 @@ class Post
      * @ORM\GeneratedValue
      * @ORM\Column(type="bigint")
      */
-    private $id;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $post_date;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $post_content;
+    private ?string $post_content;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $post_title;
+    private ?string $post_title;
 
     /**
      * @ORM\Column(type="string", length=20)
      */
-    private $post_status;
+    private ?string $post_status;
 
     /**
      * @ORM\Column(type="string", length=20)
      */
-    private $post_comment_status;
+    private ?string $post_comment_status;
 
     /**
      * @ORM\Column(type="string", length=200)
      */
-    private $post_name;
+    private ?string $post_name;
 
     /**
      * @ORM\Column(type="bigint")
      */
-    private $post_comment_count;
+    private ?string $post_comment_count;
 
     /**
-     * @ORM\ManyToOne(targetEntity=category::class, inversedBy="posts")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="posts")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $category;
+    private ?category $category;
 
     /**
      * @ORM\OneToMany(targetEntity=CommentPost::class, mappedBy="post")
      */
-    private $commentPost;
+    private ArrayCollection $commentPost;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $post_update_date;
+    private ?\DateTimeInterface $post_update_date;
 
     public function __construct()
     {
@@ -82,7 +77,7 @@ class Post
 
     public function setPostDate(\DateTimeInterface $post_date): self
     {
-        $this->post_date = $post_date;
+        $this->$post_date = $post_date;
 
         return $this;
     }
@@ -172,7 +167,7 @@ class Post
     }
 
     /**
-     * @return Collection|CommentPost[]
+     * @return Collection
      */
     public function getCommentPost(): Collection
     {

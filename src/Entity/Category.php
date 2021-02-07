@@ -17,23 +17,23 @@ class Category
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $cat_name;
+    private ?string $cat_name;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="cat_parent_id")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $category;
+    private ?Category $category;
 
     /**
      * @ORM\OneToMany(targetEntity=Post::class, mappedBy="category")
      */
-    private $posts;
+    private ArrayCollection $posts;
 
     public function __construct()
     {

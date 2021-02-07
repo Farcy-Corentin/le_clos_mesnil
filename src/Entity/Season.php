@@ -17,27 +17,32 @@ class Season
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $sea_price;
+    private ?int $sea_price;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
-    private $sea_date_start;
+    private ?\DateTimeInterface $sea_date_start;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
-    private $sea_date_end;
+    private ?\DateTimeInterface $sea_date_end;
 
     /**
      * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="season")
      */
-    private $season;
+    private ArrayCollection $season;
+
+    /**
+     * @ORM\Column(type="string", length=25)
+     */
+    private ?string $sea_name;
 
     public function __construct()
     {
@@ -111,6 +116,18 @@ class Season
                 $season->setSeason(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSeaName(): ?string
+    {
+        return $this->sea_name;
+    }
+
+    public function setSeaName(string $sea_name): self
+    {
+        $this->sea_name = $sea_name;
 
         return $this;
     }

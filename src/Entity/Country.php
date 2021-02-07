@@ -16,26 +16,36 @@ class Country
      * @ORM\Id
      * @ORM\Column(type="string", length=2)
      */
-    private $id;
+    private ?string $id;
 
     /**
      * @ORM\Column(type="string", length=45)
      */
-    private $cou_name;
+    private ?string $cou_name;
+
+    /**
+     * @ORM\Column(type="string", length=45)
+     */
+    private ?string $cou_english_name;
 
     /**
      * @ORM\OneToMany(targetEntity=Users::class, mappedBy="country")
      */
-    private $users;
+    private ArrayCollection $users;
 
     public function __construct()
     {
         $this->users = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
+    }
+
+    public function setId(string $id): ?string
+    {
+        return $this->id = $id;
     }
 
     public function getCouName(): ?string
@@ -46,6 +56,18 @@ class Country
     public function setCouName(string $cou_name): self
     {
         $this->cou_name = $cou_name;
+
+        return $this;
+    }
+
+    public function getCouEnglishName(): ?string
+    {
+        return $this->cou_english_name;
+    }
+
+    public function setCouEnglishName(string $cou_english_name): self
+    {
+        $this->cou_english_name = $cou_english_name;
 
         return $this;
     }
@@ -67,16 +89,6 @@ class Country
 
         return $this;
     }
-
-    public function removeUser(Users $user): self
-    {
-        if ($this->users->removeElement($user)) {
-            // set the owning side to null (unless already changed)
-            if ($user->getCountry() === $this) {
-                $user->setCountry(null);
-            }
-        }
-
-        return $this;
-    }
 }
+
+

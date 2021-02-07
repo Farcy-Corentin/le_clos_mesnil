@@ -15,23 +15,23 @@ class CommentReservation
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $com_res_date;
+    private ?\DateTimeInterface $com_res_date;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $com_res_content;
+    private ?string $com_res_content;
 
     /**
-     * @ORM\OneToOne(targetEntity=reservation::class, inversedBy="commentReservation")
+     * @ORM\OneToOne(targetEntity=Reservation::class, inversedBy="commentReservation")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $reservation;
+    private ?reservation $reservation;
 
     public function getId(): ?int
     {

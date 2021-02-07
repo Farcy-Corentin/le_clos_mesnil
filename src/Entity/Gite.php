@@ -17,47 +17,52 @@ class Gite
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=25)
      */
-    private $git_name;
+    private ?string $git_name;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $git_description;
+    private ?string $git_description;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $git_address;
+    private ?string $git_address;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $git_city;
+    private ?string $git_city;
+
+    /**
+     * @ORM\Column(type="string", length=5)
+     */
+    private ?string $git_zipcode;
 
     /**
      * @ORM\Column(type="string", length=10)
      */
-    private $git_phone;
+    private ?string $git_phone;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $git_mail;
+    private ?string $git_mail;
 
     /**
      * @ORM\OneToMany(targetEntity=Rule::class, mappedBy="gite")
      */
-    private $rule;
+    private ArrayCollection $rule;
 
     /**
      * @ORM\OneToMany(targetEntity=Room::class, mappedBy="gite")
      */
-    private $rooms;
+    private ArrayCollection $rooms;
 
     public function __construct()
     {
@@ -143,9 +148,8 @@ class Gite
     }
 
 
-
     /**
-     * @return Collection|Rule[]
+     * @return Collection
      */
     public function getRule(): Collection
     {
@@ -175,7 +179,7 @@ class Gite
     }
 
     /**
-     * @return Collection|Room[]
+     * @return Collection
      */
     public function getRooms(): Collection
     {
@@ -192,14 +196,14 @@ class Gite
         return $this;
     }
 
-    public function removeRoom(Room $room): self
+    public function getGitZipcode(): ?string
     {
-        if ($this->rooms->removeElement($room)) {
-            // set the owning side to null (unless already changed)
-            if ($room->getGite() === $this) {
-                $room->setGite(null);
-            }
-        }
+        return $this->git_zipcode;
+    }
+
+    public function setGitZipcode(string $git_zipcode): self
+    {
+        $this->git_zipcode = $git_zipcode;
 
         return $this;
     }

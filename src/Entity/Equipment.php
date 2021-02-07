@@ -17,32 +17,32 @@ class Equipment
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $equ_name;
+    private ?string $equ_name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $equ_description;
+    private ?string $equ_description;
 
     /**
-     * @ORM\ManyToMany(targetEntity=room::class, inversedBy="equipment")
+     * @ORM\ManyToMany(targetEntity=Room::class, inversedBy="equipment")
      */
-    private $room;
+    private ArrayCollection $room;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $equ_english_name;
+    private ?string $equ_english_name;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $equ_english_description;
+    private ?string $equ_english_description;
 
     public function __construct()
     {
@@ -79,7 +79,7 @@ class Equipment
     }
 
     /**
-     * @return Collection|room[]
+     * @return Collection
      */
     public function getRoom(): Collection
     {

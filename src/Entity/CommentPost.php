@@ -15,34 +15,34 @@ class CommentPost
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $com_post_date;
+    private ?\DateTimeInterface $com_post_date;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $com_update_date;
+    private ?\DateTimeInterface $com_update_date;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $com_post_content;
+    private ?string $com_post_content;
 
     /**
-     * @ORM\ManyToOne(targetEntity=post::class, inversedBy="commentPost")
+     * @ORM\ManyToOne(targetEntity=Post::class, inversedBy="commentPost")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $post;
+    private ?post $post;
 
     /**
-     * @ORM\ManyToOne(targetEntity=users::class, inversedBy="commentPost")
+     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="commentPost")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $user;
+    private ?users $user;
 
     public function getId(): ?int
     {

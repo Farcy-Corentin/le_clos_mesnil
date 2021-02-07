@@ -43,21 +43,21 @@ class Reservation
     private $res_payment_date;
 
     /**
-     * @ORM\ManyToOne(targetEntity=users::class, inversedBy="reservations")
+     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="reservations")
      * @ORM\JoinColumn(nullable=false)
      */
     private $users;
 
     /**
-     * @ORM\ManyToOne(targetEntity=season::class, inversedBy="season")
+     * @ORM\ManyToOne(targetEntity=Season::class, inversedBy="season")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $season;
+    private ?season $season;
 
     /**
      * @ORM\OneToOne(targetEntity=Commentreservation::class, mappedBy="reservation", cascade={"persist", "remove"})
      */
-    private $commentReservation;
+    private ?Commentreservation $commentReservation;
 
 
     public function getId(): ?int

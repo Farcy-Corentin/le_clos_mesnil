@@ -15,33 +15,33 @@ class Rule
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $rul_title;
+    private ?string $rul_title;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $rul_description;
+    private ?string $rul_description;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $rul_english_title;
+    private ?string $rul_english_title;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $rul_english_description;
+    private ?string $rul_english_description;
 
     /**
-     * @ORM\ManyToOne(targetEntity=gite::class, inversedBy="rule")
+     * @ORM\ManyToOne(targetEntity=Gite::class, inversedBy="rule")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $gite;
+    private ?gite $gite;
 
     public function getId(): ?int
     {
