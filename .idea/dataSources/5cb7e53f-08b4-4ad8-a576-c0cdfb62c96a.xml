@@ -1241,303 +1241,313 @@ room_id</ColNames>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="356" parent="296" name="PRIMARY">
+    <column id="356" parent="296" name="git_zipcode">
+      <Position>8</Position>
+      <DataType>varchar(5)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="357" parent="296" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="357" parent="297" name="id">
+    <column id="358" parent="297" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="358" parent="297" name="category_id">
+    <column id="359" parent="297" name="category_id">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="359" parent="297" name="post_content">
+    <column id="360" parent="297" name="post_content">
       <Position>3</Position>
       <DataType>longtext|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="360" parent="297" name="post_title">
+    <column id="361" parent="297" name="post_title">
       <Position>4</Position>
       <DataType>longtext|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="361" parent="297" name="post_status">
+    <column id="362" parent="297" name="post_status">
       <Position>5</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="362" parent="297" name="post_comment_status">
+    <column id="363" parent="297" name="post_comment_status">
       <Position>6</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="363" parent="297" name="post_name">
+    <column id="364" parent="297" name="post_name">
       <Position>7</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="364" parent="297" name="post_comment_count">
+    <column id="365" parent="297" name="post_comment_count">
       <Position>8</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="365" parent="297" name="post_update_date">
+    <column id="366" parent="297" name="post_update_date">
       <Position>9</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <index id="366" parent="297" name="IDX_5A8A6C8D12469DE2">
+    <index id="367" parent="297" name="IDX_5A8A6C8D12469DE2">
       <ColNames>category_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="367" parent="297" name="PRIMARY">
+    <key id="368" parent="297" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="368" parent="297" name="FK_5A8A6C8D12469DE2">
+    <foreign-key id="369" parent="297" name="FK_5A8A6C8D12469DE2">
       <ColNames>category_id</ColNames>
       <RefTableName>category</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="369" parent="298" name="id">
+    <column id="370" parent="298" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="370" parent="298" name="users_id">
+    <column id="371" parent="298" name="users_id">
       <Position>2</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="371" parent="298" name="season_id">
+    <column id="372" parent="298" name="season_id">
       <Position>3</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="372" parent="298" name="res_date">
+    <column id="373" parent="298" name="res_date">
       <Position>4</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="373" parent="298" name="res_date_start">
+    <column id="374" parent="298" name="res_date_start">
       <Position>5</Position>
-      <DataType>datetime|0s</DataType>
+      <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="374" parent="298" name="res_date_end">
+    <column id="375" parent="298" name="res_date_end">
       <Position>6</Position>
-      <DataType>datetime|0s</DataType>
+      <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="375" parent="298" name="res_price">
+    <column id="376" parent="298" name="res_price">
       <Position>7</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="376" parent="298" name="res_payment_date">
+    <column id="377" parent="298" name="res_payment_date">
       <Position>8</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <index id="377" parent="298" name="IDX_42C8495567B3B43D">
+    <index id="378" parent="298" name="IDX_42C8495567B3B43D">
       <ColNames>users_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="378" parent="298" name="IDX_42C849554EC001D1">
+    <index id="379" parent="298" name="IDX_42C849554EC001D1">
       <ColNames>season_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="379" parent="298" name="PRIMARY">
+    <key id="380" parent="298" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="380" parent="298" name="FK_42C8495567B3B43D">
+    <foreign-key id="381" parent="298" name="FK_42C8495567B3B43D">
       <ColNames>users_id</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="381" parent="298" name="FK_42C849554EC001D1">
+    <foreign-key id="382" parent="298" name="FK_42C849554EC001D1">
       <ColNames>season_id</ColNames>
       <RefTableName>season</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="382" parent="299" name="id">
+    <column id="383" parent="299" name="id">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="383" parent="299" name="gite_id">
+    <column id="384" parent="299" name="gite_id">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="384" parent="299" name="roo_name">
+    <column id="385" parent="299" name="roo_name">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="385" parent="299" name="rou_picture">
+    <column id="386" parent="299" name="rou_picture">
       <Position>4</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <index id="386" parent="299" name="IDX_729F519B652CAE9B">
+    <index id="387" parent="299" name="IDX_729F519B652CAE9B">
       <ColNames>gite_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="387" parent="299" name="PRIMARY">
+    <key id="388" parent="299" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="388" parent="299" name="FK_729F519B652CAE9B">
+    <foreign-key id="389" parent="299" name="FK_729F519B652CAE9B">
       <ColNames>gite_id</ColNames>
       <RefTableName>gite</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="389" parent="300" name="id">
+    <column id="390" parent="300" name="id">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="390" parent="300" name="gite_id">
+    <column id="391" parent="300" name="gite_id">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="391" parent="300" name="rul_title">
+    <column id="392" parent="300" name="rul_title">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="392" parent="300" name="rul_description">
+    <column id="393" parent="300" name="rul_description">
       <Position>4</Position>
       <DataType>longtext|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="393" parent="300" name="rul_english_title">
+    <column id="394" parent="300" name="rul_english_title">
       <Position>5</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="394" parent="300" name="rul_english_description">
+    <column id="395" parent="300" name="rul_english_description">
       <Position>6</Position>
       <DataType>longtext|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="395" parent="300" name="IDX_46D8ACCC652CAE9B">
+    <index id="396" parent="300" name="IDX_46D8ACCC652CAE9B">
       <ColNames>gite_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="396" parent="300" name="PRIMARY">
+    <key id="397" parent="300" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="397" parent="300" name="FK_46D8ACCC652CAE9B">
+    <foreign-key id="398" parent="300" name="FK_46D8ACCC652CAE9B">
       <ColNames>gite_id</ColNames>
       <RefTableName>gite</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="398" parent="301" name="id">
+    <column id="399" parent="301" name="id">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="399" parent="301" name="sea_price">
+    <column id="400" parent="301" name="sea_price">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="400" parent="301" name="sea_date_start">
+    <column id="401" parent="301" name="sea_date_start">
       <Position>3</Position>
-      <DataType>datetime|0s</DataType>
+      <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="401" parent="301" name="sea_date_end">
+    <column id="402" parent="301" name="sea_date_end">
       <Position>4</Position>
-      <DataType>datetime|0s</DataType>
+      <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="402" parent="301" name="PRIMARY">
+    <column id="403" parent="301" name="sea_name">
+      <Position>5</Position>
+      <DataType>varchar(25)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="404" parent="301" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="403" parent="302" name="id">
+    <column id="405" parent="302" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="404" parent="302" name="country_id">
+    <column id="406" parent="302" name="country_id">
       <Position>2</Position>
       <DataType>varchar(2)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="405" parent="302" name="use_last_name">
+    <column id="407" parent="302" name="use_last_name">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="406" parent="302" name="use_first_name">
+    <column id="408" parent="302" name="use_first_name">
       <Position>4</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="407" parent="302" name="use_mail">
+    <column id="409" parent="302" name="use_mail">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="408" parent="302" name="use_phone">
+    <column id="410" parent="302" name="use_phone">
       <Position>6</Position>
       <DataType>varchar(10)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="409" parent="302" name="use_password">
+    <column id="411" parent="302" name="use_password">
       <Position>7</Position>
       <DataType>varchar(60)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="410" parent="302" name="use_add_date">
+    <column id="412" parent="302" name="use_add_date">
       <Position>8</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="411" parent="302" name="use_update_date">
+    <column id="413" parent="302" name="use_update_date">
       <Position>9</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="412" parent="302" name="use_url">
+    <column id="414" parent="302" name="use_url">
       <Position>10</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="413" parent="302" name="use_ip">
+    <column id="415" parent="302" name="use_ip">
       <Position>11</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="414" parent="302" name="IDX_1483A5E9F92F3E70">
+    <index id="416" parent="302" name="IDX_1483A5E9F92F3E70">
       <ColNames>country_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="415" parent="302" name="PRIMARY">
+    <key id="417" parent="302" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="416" parent="302" name="FK_1483A5E9F92F3E70">
+    <foreign-key id="418" parent="302" name="FK_1483A5E9F92F3E70">
       <ColNames>country_id</ColNames>
       <RefTableName>country</RefTableName>
       <RefColNames>id</RefColNames>

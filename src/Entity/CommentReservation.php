@@ -33,6 +33,11 @@ class CommentReservation
      */
     private ?reservation $reservation;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private ?int $rating;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -70,6 +75,18 @@ class CommentReservation
     public function setReservation(reservation $reservation): self
     {
         $this->reservation = $reservation;
+
+        return $this;
+    }
+
+    public function getRating(): ?int
+    {
+        return $this->rating;
+    }
+
+    public function setRating(int $rating): self
+    {
+        $this->rating = $rating;
 
         return $this;
     }
