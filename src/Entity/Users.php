@@ -17,7 +17,7 @@ class Users
      * @ORM\GeneratedValue
      * @ORM\Column(type="bigint")
      */
-    private $id;
+    private  $id;
 
     /**
      * @ORM\Column(type="string", length=50)

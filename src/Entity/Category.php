@@ -24,16 +24,17 @@ class Category
      */
     private ?string $cat_name;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="cat_parent_id")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private ?Category $category;
+
 
     /**
      * @ORM\OneToMany(targetEntity=Post::class, mappedBy="category")
      */
     private ArrayCollection $posts;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="category")
+     */
+    private ?Category $cat_parent;
 
     public function __construct()
     {
@@ -57,20 +58,8 @@ class Category
         return $this;
     }
 
-    public function getCategory(): ?self
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?self $category): self
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
     /**
-     * @return Collection|Post[]
+     * @return Collection
      */
     public function getPosts(): Collection
     {
@@ -95,6 +84,18 @@ class Category
                 $post->setCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCatParentId(): ?self
+    {
+        return $this->cat_parent;
+    }
+
+    public function setCatParentId(?self $cat_parent): self
+    {
+        $this->cat_parent = $cat_parent;
 
         return $this;
     }

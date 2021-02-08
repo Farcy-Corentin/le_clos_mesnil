@@ -17,22 +17,22 @@ class Room
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $roo_name;
+    private ?string $roo_name;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
      */
-    private $rou_picture;
+    private ?string $roo_picture;
 
     /**
      * @ORM\ManyToMany(targetEntity=Equipment::class, mappedBy="room")
      */
-    private $equipment;
+    private ArrayCollection $equipment;
 
     /**
      * @ORM\ManyToOne(targetEntity=Gite::class, inversedBy="rooms")
@@ -64,12 +64,12 @@ class Room
 
     public function getRouPicture(): ?string
     {
-        return $this->rou_picture;
+        return $this->roo_picture;
     }
 
-    public function setRouPicture(?string $rou_picture): self
+    public function setRouPicture(?string $roo_picture): self
     {
-        $this->rou_picture = $rou_picture;
+        $this->roo_picture = $roo_picture;
 
         return $this;
     }

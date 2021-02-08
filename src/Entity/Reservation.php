@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ReservationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Integer;
 
 /**
  * @ORM\Entity(repositoryClass=ReservationRepository::class)
@@ -15,42 +16,42 @@ class Reservation
      * @ORM\GeneratedValue
      * @ORM\Column(type="bigint")
      */
-    private $id;
+    private ?Integer $id;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $res_date;
+    private ?\DateTimeInterface $res_date;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
-    private $res_date_start;
+    private ?\DateTimeInterface $res_date_start;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
-    private $res_date_end;
+    private ?\DateTimeInterface $res_date_end;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $res_price;
+    private ?int $res_price;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $res_payment_date;
+    private ?\DateTimeInterface $res_payment_date;
 
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="reservations")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $users;
+    private ?users $users;
 
     /**
      * @ORM\ManyToOne(targetEntity=Season::class, inversedBy="season")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private ?season $season;
 
