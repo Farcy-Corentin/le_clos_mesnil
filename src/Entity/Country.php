@@ -73,7 +73,7 @@ class Country
     }
 
     /**
-     * @return Collection|Users[]
+     * @return Collection
      */
     public function getUsers(): Collection
     {
