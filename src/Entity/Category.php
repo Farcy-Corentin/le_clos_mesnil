@@ -2,13 +2,23 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ * @ApiResource (
+ *     attributes={
+ *     "order"={"cat_name":"DESC"}
+ *     },
+ *     normalizationContext={"groups"={"read":"categories"}},
+ *     collectionOperations={"get","post"},
+ *     itemOperations={"get","delete","put","patch"}
+ *     )
  */
 class Category
 {
@@ -16,23 +26,25 @@ class Category
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"read":"categories"})
      */
     private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Groups({"read":"categories"})
      */
     private ?string $cat_name;
 
-
-
     /**
      * @ORM\OneToMany(targetEntity=Post::class, mappedBy="category")
+     * @Groups({"read":"categories"})
      */
-    private ArrayCollection $posts;
+    private Collection $posts;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="category")
+     * @Groups({"read":"categories"})
      */
     private ?Category $cat_parent;
 

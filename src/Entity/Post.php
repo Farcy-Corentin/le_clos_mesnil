@@ -2,13 +2,24 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\PostRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
+ * @ApiResource(
+ *     attributes={
+            "order"={"post_date":"DESC"},
+ *     },
+ *     paginationItemsPerPage=5,
+ *     normalizationContext={"groups"={"read:post", "update:post", "delete:post"}},
+ *     collectionOperations={"get","post"},
+ *     itemOperations={"get","delete","put","patch"}
+ *     )
  */
 class Post
 {
@@ -16,54 +27,71 @@ class Post
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="bigint")
+     * @Groups({"read:post", "delete:post"})
      */
     private ?int $id;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"read:post", "update:post"})
      */
     private ?string $post_content;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"read:post", "update:post", "read:comment"})
      */
     private ?string $post_title;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Groups({"read:post", "update:post"})
      */
     private ?string $post_status;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Groups({"read:post", "update:post"})
      */
     private ?string $post_comment_status;
 
     /**
      * @ORM\Column(type="string", length=200)
+     * @Groups({"read:post", "update:post"})
      */
     private ?string $post_name;
 
     /**
      * @ORM\Column(type="bigint")
+     * @Groups({"read:post"})
      */
     private ?string $post_comment_count;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="posts")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"read:post", "update:post"})
      */
     private ?category $category;
 
     /**
      * @ORM\OneToMany(targetEntity=CommentPost::class, mappedBy="post")
+     * @Groups({"read:post"})
+     * @return Collection
      */
-    private ArrayCollection $commentPost;
+    private Collection $commentPost;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"read:post", "update:post"})
      */
     private ?\DateTimeInterface $post_update_date;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @Groups({"read:post", "update:post"})
+     */
+    private ?\DateTimeInterface $post_date;
 
     public function __construct()
     {
@@ -206,5 +234,10 @@ class Post
         $this->post_update_date = $post_update_date;
 
         return $this;
+    }
+
+    public function getPostDate(): ?\DateTimeInterface
+    {
+        return $this->post_date;
     }
 }

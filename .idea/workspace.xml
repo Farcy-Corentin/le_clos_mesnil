@@ -20,18 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="383e4ac8-f73a-4555-9139-b987e91017c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/robots.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/le_clos_mesnil.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/le_clos_mesnil.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/base_de_donnees/mcd_le_clos_mesnil.lo1" beforeDir="false" afterPath="$PROJECT_DIR$/doc/base_de_donnees/mcd_le_clos_mesnil.lo1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/CommentPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/CommentPost.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Country.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Country.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Reservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Users.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +201,10 @@
       <workItem from="1613553072071" duration="3505000" />
       <workItem from="1613635790321" duration="3933000" />
       <workItem from="1614066512890" duration="2206000" />
-      <workItem from="1614155788834" duration="3724000" />
+      <workItem from="1614155788834" duration="16625000" />
+      <workItem from="1614238860127" duration="15586000" />
+      <workItem from="1614586478117" duration="6478000" />
+      <workItem from="1614695746725" duration="2627000" />
     </task>
     <task id="LOCAL-00001" summary="Update dictionnaire de donnees, Update MCD">
       <created>1611830069025</created>
@@ -271,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612869344222</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Add api_platform">
+      <created>1614160775128</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1614160775128</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,7 +302,8 @@
     <MESSAGE value="Add HomeController. Add HomePage. Update BDD." />
     <MESSAGE value="Update migration" />
     <MESSAGE value="Add backup BDD" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add backup BDD" />
+    <MESSAGE value="Add api_platform" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add api_platform" />
   </component>
   <component name="WindowStateProjectService">
     <state x="348" y="67" key="#CLI_Interpreters" timestamp="1612445119016">
@@ -324,17 +330,21 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1613464482114" />
-    <state x="207" y="44" key="Vcs.Push.Dialog.v2" timestamp="1612869354011">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1614241537558">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="207" y="44" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1612869354011" />
+    <state width="498" height="446" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1614241537558" />
+    <state x="207" y="44" key="Vcs.Push.Dialog.v2" timestamp="1614160777157">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="207" y="44" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1614160777157" />
     <state x="798" y="230" width="413" height="370" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1612461346659">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="798" y="230" width="413" height="370" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.0.1536.824@0.0.1536.824" timestamp="1612461346659" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1612447442486">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1614245694929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1612447442486" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1614245694929" />
   </component>
 </project>

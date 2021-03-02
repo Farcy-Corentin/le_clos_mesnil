@@ -2,81 +2,105 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UsersRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=UsersRepository::class)
+ * @ApiResource (
+ *     attributes={
+ *     "order"={"use_last_name":"DESC"}
+ *     },
+ *     normalizationContext={"groups"={"read":"users"}},
+ *     collectionOperations={"get","post"},
+ *     itemOperations={"get","delete","put","patch"}
+ *     )
  */
+#[ApiResource]
 class Users
 {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="bigint")
+     * @Groups({"read":"users"})
      */
-    private  $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Groups({"read":"users", "read:comment"})
      */
     private ?string $use_last_name;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Groups({"read":"users", "read:comment"})
      */
     private ?string $use_first_name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read":"users"})
      */
     private ?string $use_mail;
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @Groups({"read":"users"})
      */
     private ?string $use_phone;
 
     /**
      * @ORM\Column(type="string", length=60)
+     * @Groups({"read":"users"})
      */
     private ?string $use_password;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"read":"users"})
      */
     private ?\DateTimeInterface $use_add_date;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"read":"users"})
      */
     private ?\DateTimeInterface $use_update_date;
 
     /**
      * @ORM\ManyToOne(targetEntity=Country::class, inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"read":"users"})
      */
     private ?country $country;
 
     /**
      * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="users")
+     * @Groups({"read":"users"})
      */
-    private ArrayCollection $reservations;
+    private Collection $reservations;
 
     /**
      * @ORM\OneToMany(targetEntity=CommentPost::class, mappedBy="user")
+     * @Groups({"read":"users"})
      */
-    private ArrayCollection $commentPost;
+    private Collection $commentPost;
 
     /**
      * @ORM\Column(type="string", length=200)
+     * @Groups({"read":"users"})
      */
     private ?string $use_url;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Groups({"read":"users"})
      */
     private ?string $use_ip;
 
@@ -87,7 +111,7 @@ class Users
     }
 
 
-    public function getUseId(): ?string
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -189,7 +213,7 @@ class Users
     }
 
     /**
-     * @return Collection|Reservation[]
+     * @return Collection
      */
     public function getReservations(): Collection
     {
@@ -219,7 +243,7 @@ class Users
     }
 
     /**
-     * @return Collection|CommentPost[]
+     * @return Collection
      */
     public function getCommentPost(): Collection
     {

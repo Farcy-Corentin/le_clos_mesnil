@@ -16,7 +16,7 @@ class Reservation
      * @ORM\GeneratedValue
      * @ORM\Column(type="bigint")
      */
-    private ?Integer $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="datetime")
@@ -56,7 +56,7 @@ class Reservation
     private ?season $season;
 
     /**
-     * @ORM\OneToOne(targetEntity=Commentreservation::class, mappedBy="reservation", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=CommentReservation::class, mappedBy="reservation", cascade={"persist", "remove"})
      */
     private ?Commentreservation $commentReservation;
 
