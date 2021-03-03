@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\CommentPostRepository;
 use Doctrine\ORM\Mapping as ORM;
@@ -15,7 +17,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     },
  *     paginationItemsPerPage=2,
  *     normalizationContext={"groups"={"create:comment", "read:comment", "update:comment", "delete:comment"}},
- *     collectionOperations={"get","post"},
+ *     collectionOperations={
+ *          "get",
+ *          "post"={
+ *              "controller"="App\Controller\Api\CommentCreateController::class"
+ *              }
+ *      },
  *     itemOperations={
  *       "get"={
  *          "normalization_context"={
@@ -27,6 +34,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *        }
  *     ,"delete","put","patch"}
  * )
+ * @ApiFilter(SearchFilter::class,properties={"post": "exact"})
  */
 
 class CommentPost
