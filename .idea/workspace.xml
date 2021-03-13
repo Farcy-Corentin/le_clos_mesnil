@@ -20,18 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="383e4ac8-f73a-4555-9139-b987e91017c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/styles/custom.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postcss.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/le_clos_mesnil.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/le_clos_mesnil.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/Api/EmptyController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Security/CommentVoter.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/home.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Api/CommentCreateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Api/CommentCreateController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/CommentPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/CommentPost.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Users.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,7 +226,15 @@
       <workItem from="1614586478117" duration="6478000" />
       <workItem from="1614695746725" duration="3042000" />
       <workItem from="1614758734084" duration="10430000" />
-      <workItem from="1614848924669" duration="18645000" />
+      <workItem from="1614848924669" duration="18732000" />
+      <workItem from="1615190796850" duration="6801000" />
+      <workItem from="1615212590071" duration="2238000" />
+      <workItem from="1615277074706" duration="375000" />
+      <workItem from="1615277477495" duration="1991000" />
+      <workItem from="1615280935982" duration="5350000" />
+      <workItem from="1615366929811" duration="3732000" />
+      <workItem from="1615536802667" duration="7210000" />
+      <workItem from="1615630517352" duration="759000" />
     </task>
     <task id="LOCAL-00001" summary="Update dictionnaire de donnees, Update MCD">
       <created>1611830069025</created>
@@ -317,7 +320,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614782967169</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Add Bootstrap">
+      <created>1614970154512</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1614970154512</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,7 +356,8 @@
     <MESSAGE value="Add api_platform" />
     <MESSAGE value="Update Api CommentPost, Post, Users, Reservation, Category, Country" />
     <MESSAGE value="Update CommentPost, Add CommentCreateController" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update CommentPost, Add CommentCreateController" />
+    <MESSAGE value="Add Bootstrap" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Bootstrap" />
   </component>
   <component name="WindowStateProjectService">
     <state x="348" y="67" key="#CLI_Interpreters" timestamp="1614930793717">
@@ -361,14 +372,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="529" y="202" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1611684110817" />
+    <state x="554" y="120" key="#com.intellij.ide.util.MemberChooser" timestamp="1615197373176">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="554" y="120" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1615197373176" />
     <state x="483" y="228" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#" timestamp="1612444875290">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="483" y="228" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#/0.0.1536.824@0.0.1536.824" timestamp="1612444875290" />
-    <state x="958" y="122" key="NewPhpClassDialog" timestamp="1614761498739">
+    <state x="958" y="122" key="NewPhpClassDialog" timestamp="1615583818250">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="958" y="122" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1614761498739" />
+    <state x="958" y="122" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1615583818250" />
     <state x="604" y="332" key="NewPhpFileDialog" timestamp="1612512900505">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -381,17 +396,28 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1614241537558" />
-    <state x="207" y="44" key="Vcs.Push.Dialog.v2" timestamp="1614782973895">
+    <state x="207" y="44" key="Vcs.Push.Dialog.v2" timestamp="1614970157257">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="207" y="44" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1614782973895" />
+    <state x="207" y="44" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1614970157257" />
     <state x="798" y="230" width="413" height="370" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1612461346659">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="798" y="230" width="413" height="370" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.0.1536.824@0.0.1536.824" timestamp="1612461346659" />
-    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1614869170822">
+    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1615213966337">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1614869170822" />
+    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1615213966337" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/pages/home.html.twig</url>
+          <line>5</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

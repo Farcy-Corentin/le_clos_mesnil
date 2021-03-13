@@ -20,7 +20,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     collectionOperations={
  *          "get",
  *          "post"={
- *              "controller"="App\Controller\Api\CommentCreateController::class"
+ *              "security"="is_granted('IS_AUTHENTICATED_FULLY')",
+ *              "controller"="App\Controller\Api\CommentCreateController::class",
+ *              "denormalization_context"={"groups"={"create:comment"}}
  *              }
  *      },
  *     itemOperations={
@@ -32,7 +34,14 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              }
  *          }
  *        }
- *     ,"delete","put","patch"}
+ *     ,"delete"={
+ *     "security"="is_granted('EDIT_COMMENT', object)",
+ *      },
+ *     "put"={
+ *     "security"="is_granted('EDIT_COMMENT', object)",
+ *     "denormalization_context"={"groups"={"update:comment"}}
+ *      }
+ *      }
  * )
  * @ApiFilter(SearchFilter::class,properties={"post": "exact"})
  */
@@ -61,14 +70,14 @@ class CommentPost
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"read:comment"})
+     * @Groups({"read:comment", "create:comment", "update:comment"})
      */
     private ?string $com_post_content;
 
     /**
      * @ORM\ManyToOne(targetEntity=Post::class, inversedBy="commentPost")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"read:comment", "read:full:comment"})
+     * @Groups({"read:full:comment", "create:comment"})
      */
     private ?post $post;
 
@@ -78,6 +87,8 @@ class CommentPost
      * @Groups({"read:comment"})
      */
     private ?users $user;
+
+    private ?string $author;
 
     public function getId(): ?int
     {
@@ -139,8 +150,26 @@ class CommentPost
 
     public function setUser(?users $user): self
     {
-        $this->user = $user;
+       $this->user = $user;
 
+       return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAuthor(): ?string
+    {
+        $users = $this->getUser();
+        $this->author = $users;
         return $this;
+    }
+
+    /**
+     * @param string|null $author
+     */
+    public function setAuthor(?string $author): void
+    {
+        $this->author = $author;
     }
 }

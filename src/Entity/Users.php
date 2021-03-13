@@ -104,6 +104,8 @@ class Users
      */
     private ?string $use_ip;
 
+    private ?string $use_pseudo;
+
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
@@ -294,5 +296,22 @@ class Users
         $this->use_ip = $use_ip;
 
         return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUsePseudo(): ?string
+    {
+        $use_pseudo=$this->getUseFirstName().$this->getUseLastName();
+        return $this->$use_pseudo->use_pseudo;
+    }
+
+    /**
+     * @param string|null $use_pseudo
+     */
+    public function setUsePseudo(?string $use_pseudo): void
+    {
+        $this->use_pseudo = $use_pseudo;
     }
 }

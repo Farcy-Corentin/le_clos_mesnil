@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
+
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
  * @ApiResource(
@@ -18,7 +19,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     paginationItemsPerPage=5,
  *     normalizationContext={"groups"={"read:post", "update:post", "delete:post"}},
  *     collectionOperations={"get","post"},
- *     itemOperations={"get","delete","put","patch"}
+ *     itemOperations={
+ *       "get"={
+ *          "controller"="App\Controller\Api\EmptyController::class",
+ *          "read"=false,
+ *          "deserialize"=false,
+ *       "delete","put","patch"}}
  *     )
  */
 class Post
