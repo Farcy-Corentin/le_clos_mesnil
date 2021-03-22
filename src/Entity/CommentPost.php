@@ -150,9 +150,9 @@ class CommentPost
 
     public function setUser(?User $user): self
     {
-       $this->user = $user;
+        $this->user = $user;
 
-       return $this;
+        return $this;
     }
 
     /**
