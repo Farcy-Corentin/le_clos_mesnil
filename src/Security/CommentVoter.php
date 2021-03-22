@@ -5,7 +5,7 @@ namespace App\Security;
 
 
 use App\Entity\CommentPost;
-use App\Entity\Users;
+use App\Entity\User;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
@@ -27,7 +27,7 @@ class CommentVoter extends Voter
     protected function voteOnAttribute(string $attribute, $subject, TokenInterface $token)
     {
         $user = $token->getUser();
-        if (!$user instanceof Users ||
+        if (!$user instanceof User ||
             !$subject instanceof CommentPost
         ) {
             return false;
