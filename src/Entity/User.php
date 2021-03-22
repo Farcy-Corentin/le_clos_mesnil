@@ -50,7 +50,7 @@ class User implements UserInterface
     private ?string $email;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=20)
      * @Groups({"read":"users"})
      */
     private ?string $phone;
@@ -74,7 +74,7 @@ class User implements UserInterface
     private ?\DateTimeInterface $updateDate;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="Country", inversedBy="user")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"read":"users"})
      */
@@ -207,7 +207,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getCountry(): ?string
+    public function getCountry(): ?Country
     {
         return $this->country;
     }
@@ -309,7 +309,7 @@ class User implements UserInterface
     }
     public function setPseudo(): ?string
     {
-        $this->pseudo=$this->firstName." ".$this->lastName;
+        $this->pseudo = $this->firstName . " " . $this->lastName;
         return $this;
     }
 
@@ -320,8 +320,10 @@ class User implements UserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = array('ROLE_USER',
-                    'ROLE_ADMIN');
+        $roles[] = array(
+            'ROLE_USER',
+            'ROLE_ADMIN'
+        );
 
         return array_unique($roles);
     }

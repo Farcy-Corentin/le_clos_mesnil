@@ -21,27 +21,27 @@ class Reservation
     /**
      * @ORM\Column(type="datetime")
      */
-    private ?\DateTimeInterface $res_date;
+    private ?\DateTimeInterface $date;
 
     /**
      * @ORM\Column(type="date")
      */
-    private ?\DateTimeInterface $res_date_start;
+    private ?\DateTimeInterface $date_start;
 
     /**
      * @ORM\Column(type="date")
      */
-    private ?\DateTimeInterface $res_date_end;
+    private ?\DateTimeInterface $date_end;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private ?int $res_price;
+    private ?int $price;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private ?\DateTimeInterface $res_payment_date;
+    private ?\DateTimeInterface $payment_date;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reservations")
@@ -68,60 +68,60 @@ class Reservation
 
     public function getResDate(): ?\DateTimeInterface
     {
-        return $this->res_date;
+        return $this->date;
     }
 
-    public function setResDate(\DateTimeInterface $res_date): self
+    public function setResDate(\DateTimeInterface $date): self
     {
-        $this->res_date = $res_date;
+        $this->date = $date;
 
         return $this;
     }
 
     public function getResDateStart(): ?\DateTimeInterface
     {
-        return $this->res_date_start;
+        return $this->date_start;
     }
 
-    public function setResDateStart(\DateTimeInterface $res_date_start): self
+    public function setResDateStart(\DateTimeInterface $date_start): self
     {
-        $this->res_date_start = $res_date_start;
+        $this->date_start = $date_start;
 
         return $this;
     }
 
     public function getResDateEnd(): ?\DateTimeInterface
     {
-        return $this->res_date_end;
+        return $this->date_end;
     }
 
-    public function setResDateEnd(\DateTimeInterface $res_date_end): self
+    public function setResDateEnd(\DateTimeInterface $date_end): self
     {
-        $this->res_date_end = $res_date_end;
+        $this->date_end = $date_end;
 
         return $this;
     }
 
     public function getResPrice(): ?int
     {
-        return $this->res_price;
+        return $this->price;
     }
 
-    public function setResPrice(int $res_price): self
+    public function setResPrice(int $price): self
     {
-        $this->res_price = $res_price;
+        $this->price = $price;
 
         return $this;
     }
 
     public function getResPaymentDate(): ?\DateTimeInterface
     {
-        return $this->res_payment_date;
+        return $this->payment_date;
     }
 
-    public function setResPaymentDate(?\DateTimeInterface $res_payment_date): self
+    public function setResPaymentDate(?\DateTimeInterface $payment_date): self
     {
-        $this->res_payment_date = $res_payment_date;
+        $this->payment_date = $payment_date;
 
         return $this;
     }

@@ -22,37 +22,37 @@ class Gite
     /**
      * @ORM\Column(type="string", length=25)
      */
-    private ?string $git_name;
+    private ?string $name;
 
     /**
      * @ORM\Column(type="text")
      */
-    private ?string $git_description;
+    private ?string $description;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private ?string $git_address;
+    private ?string $address;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private ?string $git_city;
+    private ?string $city;
 
     /**
      * @ORM\Column(type="string", length=5)
      */
-    private ?string $git_zipcode;
+    private ?string $zipcode;
 
     /**
      * @ORM\Column(type="string", length=10)
      */
-    private ?string $git_phone;
+    private ?string $phone;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private ?string $git_mail;
+    private ?string $mail;
 
     /**
      * @ORM\OneToMany(targetEntity=Rule::class, mappedBy="gite")
@@ -77,72 +77,72 @@ class Gite
 
     public function getGitName(): ?string
     {
-        return $this->git_name;
+        return $this->name;
     }
 
-    public function setGitName(string $git_name): self
+    public function setGitName(string $name): self
     {
-        $this->git_name = $git_name;
+        $this->name = $name;
 
         return $this;
     }
 
     public function getGitDescription(): ?string
     {
-        return $this->git_description;
+        return $this->description;
     }
 
-    public function setGitDescription(string $git_description): self
+    public function setGitDescription(string $description): self
     {
-        $this->git_description = $git_description;
+        $this->description = $description;
 
         return $this;
     }
 
     public function getGitAddress(): ?string
     {
-        return $this->git_address;
+        return $this->address;
     }
 
-    public function setGitAddress(string $git_address): self
+    public function setGitAddress(string $address): self
     {
-        $this->git_address = $git_address;
+        $this->address = $address;
 
         return $this;
     }
 
     public function getGitCity(): ?string
     {
-        return $this->git_city;
+        return $this->city;
     }
 
-    public function setGitCity(string $git_city): self
+    public function setGitCity(string $city): self
     {
-        $this->git_city = $git_city;
+        $this->city = $city;
 
         return $this;
     }
 
     public function getGitPhone(): ?string
     {
-        return $this->git_phone;
+        return $this->phone;
     }
 
-    public function setGitPhone(string $git_phone): self
+    public function setGitPhone(string $phone): self
     {
-        $this->git_phone = $git_phone;
+        $this->phone = $phone;
 
         return $this;
     }
 
     public function getGitMail(): ?string
     {
-        return $this->git_mail;
+        return $this->mail;
     }
 
-    public function setGitMail(string $git_mail): self
+    public function setGitMail(string $mail): self
     {
-        $this->git_mail = $git_mail;
+        $this->mail = $mail;
 
         return $this;
     }
@@ -198,12 +198,12 @@ class Gite
 
     public function getGitZipcode(): ?string
     {
-        return $this->git_zipcode;
+        return $this->zipcode;
     }
 
-    public function setGitZipcode(string $git_zipcode): self
+    public function setGitZipcode(string $zipcode): self
     {
-        $this->git_zipcode = $git_zipcode;
+        $this->zipcode = $zipcode;
 
         return $this;
     }

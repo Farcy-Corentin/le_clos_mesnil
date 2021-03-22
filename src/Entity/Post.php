@@ -14,7 +14,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Entity(repositoryClass=PostRepository::class)
  * @ApiResource(
  *     attributes={
-            "order"={"post_date":"DESC"},
+            "order"={"date":"DESC"},
  *     },
  *     paginationItemsPerPage=5,
  *     normalizationContext={"groups"={"read:post", "update:post", "delete:post"}},
@@ -41,37 +41,37 @@ class Post
      * @ORM\Column(type="text")
      * @Groups({"read:post", "update:post"})
      */
-    private ?string $post_content;
+    private ?string $content;
 
     /**
      * @ORM\Column(type="text")
      * @Groups({"read:post", "update:post", "read:comment"})
      */
-    private ?string $post_title;
+    private ?string $title;
 
     /**
      * @ORM\Column(type="string", length=20)
      * @Groups({"read:post", "update:post"})
      */
-    private ?string $post_status;
+    private ?string $status;
 
     /**
      * @ORM\Column(type="string", length=20)
      * @Groups({"read:post", "update:post"})
      */
-    private ?string $post_comment_status;
+    private ?string $comment_status;
 
     /**
      * @ORM\Column(type="string", length=200)
      * @Groups({"read:post", "update:post"})
      */
-    private ?string $post_name;
+    private ?string $name;
 
     /**
      * @ORM\Column(type="bigint")
      * @Groups({"read:post"})
      */
-    private ?string $post_comment_count;
+    private ?string $comment_count;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="posts")
@@ -91,13 +91,13 @@ class Post
      * @ORM\Column(type="datetime", nullable=true)
      * @Groups({"read:post", "update:post"})
      */
-    private ?\DateTimeInterface $post_update_date;
+    private ?\DateTimeInterface $update_date;
 
     /**
      * @ORM\Column(type="datetime")
      * @Groups({"read:post", "update:post"})
      */
-    private ?\DateTimeInterface $post_date;
+    private ?\DateTimeInterface $date;
 
     public function __construct()
     {
@@ -109,81 +109,81 @@ class Post
         return $this->id;
     }
 
-    public function setPostDate(\DateTimeInterface $post_date): self
+    public function setPostDate(\DateTimeInterface $date): self
     {
-        $this->$post_date = $post_date;
+        $this->$date = $date;
 
         return $this;
     }
 
     public function getPostContent(): ?string
     {
-        return $this->post_content;
+        return $this->content;
     }
 
-    public function setPostContent(string $post_content): self
+    public function setPostContent(string $content): self
     {
-        $this->post_content = $post_content;
+        $this->content = $content;
 
         return $this;
     }
 
     public function getPostTitle(): ?string
     {
-        return $this->post_title;
+        return $this->title;
     }
 
-    public function setPostTitle(string $post_title): self
+    public function setPostTitle(string $title): self
     {
-        $this->post_title = $post_title;
+        $this->title = $title;
 
         return $this;
     }
 
     public function getPostStatus(): ?string
     {
-        return $this->post_status;
+        return $this->status;
     }
 
-    public function setPostStatus(string $post_status): self
+    public function setPostStatus(string $status): self
     {
-        $this->post_status = $post_status;
+        $this->status = $status;
 
         return $this;
     }
 
     public function getPostCommentStatus(): ?string
     {
-        return $this->post_comment_status;
+        return $this->comment_status;
     }
 
-    public function setPostCommentStatus(string $post_comment_status): self
+    public function setPostCommentStatus(string $comment_status): self
     {
-        $this->post_comment_status = $post_comment_status;
+        $this->comment_status = $comment_status;
 
         return $this;
     }
 
     public function getPostName(): ?string
     {
-        return $this->post_name;
+        return $this->name;
     }
 
-    public function setPostName(string $post_name): self
+    public function setPostName(string $name): self
     {
-        $this->post_name = $post_name;
+        $this->name = $name;
 
         return $this;
     }
 
     public function getPostCommentCount(): ?string
     {
-        return $this->post_comment_count;
+        return $this->comment_count;
     }
 
-    public function setPostCommentCount(string $post_comment_count): self
+    public function setPostCommentCount(string $comment_count): self
     {
-        $this->post_comment_count = $post_comment_count;
+        $this->comment_count = $comment_count;
 
         return $this;
     }
@@ -232,18 +232,18 @@ class Post
 
     public function getPostUpdateDate(): ?\DateTimeInterface
     {
-        return $this->post_update_date;
+        return $this->update_date;
     }
 
-    public function setPostUpdateDate(?\DateTimeInterface $post_update_date): self
+    public function setPostUpdateDate(?\DateTimeInterface $update_date): self
     {
-        $this->post_update_date = $post_update_date;
+        $this->update_date = $update_date;
 
         return $this;
     }
 
     public function getPostDate(): ?\DateTimeInterface
     {
-        return $this->post_date;
+        return $this->date;
     }
 }
