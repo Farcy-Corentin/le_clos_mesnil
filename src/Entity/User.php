@@ -3,14 +3,15 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\UsersRepository;
+use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ORM\Entity(repositoryClass=UsersRepository::class)
+ * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ApiResource (
  *     attributes={
  *     "order"={"use_last_name":"DESC"}
@@ -21,7 +22,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     )
  */
 #[ApiResource]
-class Users
+class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -35,46 +36,45 @@ class Users
      * @ORM\Column(type="string", length=50)
      * @Groups({"read":"users", "read:comment"})
      */
-    private ?string $use_last_name;
+    private ?string $lastName;
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Groups({"read":"users", "read:comment"})
+     * @Groups({"read:comment"})
      */
-    private ?string $use_first_name;
+    private ?string $firstName;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups({"read":"users"})
+     * @ORM\Column(type="string", length=180, unique=true)
      */
-    private ?string $use_mail;
+    private ?string $email;
 
     /**
      * @ORM\Column(type="string", length=10)
      * @Groups({"read":"users"})
      */
-    private ?string $use_phone;
+    private ?string $phone;
 
     /**
      * @ORM\Column(type="string", length=60)
      * @Groups({"read":"users"})
      */
-    private ?string $use_password;
+    private ?string $password;
 
     /**
      * @ORM\Column(type="datetime")
      * @Groups({"read":"users"})
      */
-    private ?\DateTimeInterface $use_add_date;
+    private ?\DateTimeInterface $createAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      * @Groups({"read":"users"})
      */
-    private ?\DateTimeInterface $use_update_date;
+    private ?\DateTimeInterface $updateDate;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Country::class, inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"read":"users"})
      */
@@ -96,15 +96,20 @@ class Users
      * @ORM\Column(type="string", length=200)
      * @Groups({"read":"users"})
      */
-    private ?string $use_url;
+    private ?string $url;
 
     /**
      * @ORM\Column(type="string", length=100)
      * @Groups({"read":"users"})
      */
-    private ?string $use_ip;
+    private ?string $ip;
 
-    private ?string $use_pseudo;
+    private ?string $pseudo;
+
+    /**
+     * @ORM\Column(type="json")
+     */
+    private array $roles = [];
 
     public function __construct()
     {
@@ -118,91 +123,91 @@ class Users
         return $this->id;
     }
 
-    public function getUseLastName(): ?string
+    public function getLastName(): ?string
     {
-        return $this->use_last_name;
+        return $this->lastName;
     }
 
-    public function setUseLastName(string $use_last_name): self
+    public function setLastName(string $lastName): self
     {
-        $this->use_last_name = $use_last_name;
+        $this->lastName = $lastName;
 
         return $this;
     }
 
-    public function getUseFirstName(): ?string
+    public function getFirstName(): ?string
     {
-        return $this->use_first_name;
+        return $this->firstName;
     }
 
-    public function setUseFirstName(string $use_first_name): self
+    public function setFirstName(string $firstName): self
     {
-        $this->use_first_name = $use_first_name;
+        $this->firstName = $firstName;
 
         return $this;
     }
 
-    public function getUseMail(): ?string
+    public function getEmail(): ?string
     {
-        return $this->use_mail;
+        return $this->email;
     }
 
-    public function setUseMail(string $use_mail): self
+    public function setUseMail(string $email): self
     {
-        $this->use_mail = $use_mail;
+        $this->email = $email;
 
         return $this;
     }
 
-    public function getUsePhone(): ?string
+    public function getPhone(): ?string
     {
-        return $this->use_phone;
+        return $this->phone;
     }
 
-    public function setUsePhone(string $use_phone): self
+    public function setPhone(string $phone): self
     {
-        $this->use_phone = $use_phone;
+        $this->phone = $phone;
 
         return $this;
     }
 
-    public function getUsePassword(): ?string
+    public function getPassword(): ?string
     {
-        return $this->use_password;
+        return $this->password;
     }
 
-    public function setUsePassword(string $use_password): self
+    public function setPassword(string $password): self
     {
-        $this->use_password = $use_password;
+        $this->password = $password;
 
         return $this;
     }
 
-    public function getUseAddDate(): ?\DateTimeInterface
+    public function getCreateAt(): ?\DateTimeInterface
     {
-        return $this->use_add_date;
+        return $this->createAt;
     }
 
-    public function setUseAddDate(\DateTimeInterface $use_add_date): self
+    public function setCreateAt(\DateTimeInterface $createAt): self
     {
-        $this->use_add_date = $use_add_date;
+        $this->createAt = $createAt;
 
         return $this;
     }
 
-    public function getUseUpdateDate(): ?\DateTimeInterface
+    public function getUpdateDate(): ?\DateTimeInterface
     {
-        return $this->use_update_date;
+        return $this->updateDate;
     }
 
-    public function setUseUpdateDate(?\DateTimeInterface $use_update_date): self
+    public function setUpdateDate(?\DateTimeInterface $updateDate): self
     {
-        $this->use_update_date = $use_update_date;
+        $this->updateDate = $updateDate;
 
         return $this;
     }
 
-    public function getCountry(): ?country
+    public function getCountry(): ?string
     {
         return $this->country;
     }
@@ -274,44 +279,85 @@ class Users
         return $this;
     }
 
-    public function getUseUrl(): ?string
+    public function getUrl(): ?string
     {
-        return $this->use_url;
+        return $this->url;
     }
 
-    public function setUseUrl(string $use_url): self
+    public function setUrl(string $url): self
     {
-        $this->use_url = $use_url;
+        $this->url = $url;
 
         return $this;
     }
 
-    public function getUseIp(): ?string
+    public function getIp(): ?string
     {
-        return $this->use_ip;
+        return $this->ip;
     }
 
-    public function setUseIp(string $use_ip): self
+    public function setIp(string $ip): self
     {
-        $this->use_ip = $use_ip;
+        $this->ip = $ip;
+
+        return $this;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+    public function setPseudo(): ?string
+    {
+        $this->pseudo=$this->firstName." ".$this->lastName;
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = array('ROLE_USER',
+                    'ROLE_ADMIN');
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
 
         return $this;
     }
 
     /**
-     * @return string|null
+     * @see UserInterface
      */
-    public function getUsePseudo(): ?string
+    public function getSalt()
     {
-        $use_pseudo=$this->getUseFirstName().$this->getUseLastName();
-        return $this->$use_pseudo->use_pseudo;
+        // not needed when using the "bcrypt" algorithm in security.yaml
+    }
+
+
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
+    {
+        return (string) $this->email;
     }
 
     /**
-     * @param string|null $use_pseudo
+     * @see UserInterface
      */
-    public function setUsePseudo(?string $use_pseudo): void
+    public function eraseCredentials()
     {
-        $this->use_pseudo = $use_pseudo;
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 }

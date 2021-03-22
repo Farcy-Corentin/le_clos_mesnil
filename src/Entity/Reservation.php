@@ -44,10 +44,10 @@ class Reservation
     private ?\DateTimeInterface $res_payment_date;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="reservations")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reservations")
      * @ORM\JoinColumn(nullable=false)
      */
-    private ?users $users;
+    private ?User $users;
 
     /**
      * @ORM\ManyToOne(targetEntity=Season::class, inversedBy="season")
@@ -126,12 +126,12 @@ class Reservation
         return $this;
     }
 
-    public function getUsers(): ?users
+    public function getUsers(): ?User
     {
         return $this->users;
     }
 
-    public function setUsers(?users $users): self
+    public function setUsers(?User $users): self
     {
         $this->users = $users;
 

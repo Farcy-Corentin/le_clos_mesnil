@@ -82,11 +82,11 @@ class CommentPost
     private ?post $post;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="commentPost")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commentPost")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"read:comment"})
      */
-    private ?users $user;
+    private ?User $user;
 
     private ?string $author;
 
@@ -143,12 +143,12 @@ class CommentPost
         return $this;
     }
 
-    public function getUser(): ?users
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?users $user): self
+    public function setUser(?User $user): self
     {
        $this->user = $user;
 

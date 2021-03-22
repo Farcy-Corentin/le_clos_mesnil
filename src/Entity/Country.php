@@ -40,7 +40,7 @@ class Country
     private ?string $cou_english_name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Users::class, mappedBy="country")
+     * @ORM\OneToMany(targetEntity="User", mappedBy="country")
      * @return Collection
      * @Groups({"read":"categories"})
      */
@@ -93,7 +93,7 @@ class Country
         return $this->users;
     }
 
-    public function addUser(Users $user): self
+    public function addUser(User $user): self
     {
         if (!$this->users->contains($user)) {
             $this->users[] = $user;
