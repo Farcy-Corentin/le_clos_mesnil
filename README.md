@@ -33,7 +33,7 @@ Le clos mesnil est un gîte, il souhaite développer leur propres système de r�
 
 - 2.2.3  Liste des produit à commander
 
-# 3- Programmer les procédures
+## 3- Programmer les procédures
 
 Gérer les vue 
 
@@ -58,9 +58,9 @@ page error 404
 - 6.2 -hébergement du site
 
 
-# 7- Création de la maquette (pages, système de réservation, authentification)
+## 7- Création de la maquette (pages, système de réservation, authentification)
 
-# 8- Développer l'application web:
+## 8- Développer l'application web:
 
  consulter les réservations
  saisir de nouvelles réservations
