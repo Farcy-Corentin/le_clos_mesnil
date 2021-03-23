@@ -56,7 +56,7 @@ class User implements UserInterface
     private ?string $phone;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @ORM\Column(type="string", length=255)
      * @Groups({"read":"users"})
      */
     private ?string $password;
@@ -307,7 +307,7 @@ class User implements UserInterface
     {
         return $this->pseudo;
     }
-    public function setPseudo(): ?string
+    public function setPseudo()
     {
         $this->pseudo = $this->firstName . " " . $this->lastName;
         return $this;

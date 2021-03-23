@@ -20,33 +20,35 @@ class Season
     private ?int $id;
 
     /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private ?string $name;
+
+    /**
      * @ORM\Column(type="integer")
      */
-    private ?int $sea_price;
+    private ?int $price;
+
+
 
     /**
      * @ORM\Column(type="date")
      */
-    private ?\DateTimeInterface $sea_date_start;
+    private ?\DateTimeInterface $date_start;
 
     /**
      * @ORM\Column(type="date")
      */
-    private ?\DateTimeInterface $sea_date_end;
+    private ?\DateTimeInterface $date_end;
 
     /**
      * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="season")
      */
-    private ArrayCollection $season;
-
-    /**
-     * @ORM\Column(type="string", length=25)
-     */
-    private ?string $sea_name;
+    private $reservations;
 
     public function __construct()
     {
-        $this->season = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -54,38 +56,50 @@ class Season
         return $this->id;
     }
 
-    public function getSeaPrice(): ?int
+    public function getName(): ?string
     {
-        return $this->sea_price;
+        return $this->name;
     }
 
-    public function setSeaPrice(int $sea_price): self
+    public function setName(string $name): self
     {
-        $this->sea_price = $sea_price;
+        $this->name = $name;
 
         return $this;
     }
 
-    public function getSeaDateStart(): ?\DateTimeInterface
+    public function getPrice(): ?int
     {
-        return $this->sea_date_start;
+        return $this->price;
     }
 
-    public function setSeaDateStart(\DateTimeInterface $sea_date_start): self
+    public function setPrice(int $price): self
     {
-        $this->sea_date_start = $sea_date_start;
+        $this->price = $price;
 
         return $this;
     }
 
-    public function getSeaDateEnd(): ?\DateTimeInterface
+    public function getDateStart(): ?\DateTimeInterface
     {
-        return $this->sea_date_end;
+        return $this->date_start;
     }
 
-    public function setSeaDateEnd(\DateTimeInterface $sea_date_end): self
+    public function setDateStart(\DateTimeInterface $date_start): self
     {
-        $this->sea_date_end = $sea_date_end;
+        $this->date_start = $date_start;
+
+        return $this;
+    }
+
+    public function getDateEnd(): ?\DateTimeInterface
+    {
+        return $this->date_end;
+    }
+
+    public function setDateEnd(\DateTimeInterface $date_end): self
+    {
+        $this->date_end = $date_end;
 
         return $this;
     }
@@ -93,41 +107,29 @@ class Season
     /**
      * @return Collection|Reservation[]
      */
-    public function getSeason(): Collection
+    public function getReservations(): Collection
     {
-        return $this->season;
+        return $this->reservations;
     }
 
-    public function addSeason(Reservation $season): self
+    public function addReservation(Reservation $reservation): self
     {
-        if (!$this->season->contains($season)) {
-            $this->season[] = $season;
-            $season->setSeason($this);
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations[] = $reservation;
+            $reservation->setSeason($this);
         }
 
         return $this;
     }
 
-    public function removeSeason(Reservation $season): self
+    public function removeReservation(Reservation $reservation): self
     {
-        if ($this->season->removeElement($season)) {
+        if ($this->reservations->removeElement($reservation)) {
             // set the owning side to null (unless already changed)
-            if ($season->getSeason() === $this) {
-                $season->setSeason(null);
+            if ($reservation->getSeason() === $this) {
+                $reservation->setSeason(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getSeaName(): ?string
-    {
-        return $this->sea_name;
-    }
-
-    public function setSeaName(string $sea_name): self
-    {
-        $this->sea_name = $sea_name;
 
         return $this;
     }

@@ -50,15 +50,14 @@ class Reservation
     private ?User $users;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Season::class, inversedBy="season")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private ?season $season;
-
-    /**
      * @ORM\OneToOne(targetEntity=CommentReservation::class, mappedBy="reservation", cascade={"persist", "remove"})
      */
     private ?Commentreservation $commentReservation;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Season::class, inversedBy="reservations")
+     */
+    private $season;
 
 
     public function getId(): ?int
@@ -66,60 +65,60 @@ class Reservation
         return $this->id;
     }
 
-    public function getResDate(): ?\DateTimeInterface
+    public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
     }
 
-    public function setResDate(\DateTimeInterface $date): self
+    public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
 
         return $this;
     }
 
-    public function getResDateStart(): ?\DateTimeInterface
+    public function getDateStart(): ?\DateTimeInterface
     {
         return $this->date_start;
     }
 
-    public function setResDateStart(\DateTimeInterface $date_start): self
+    public function setDateStart(\DateTimeInterface $date_start): self
     {
         $this->date_start = $date_start;
 
         return $this;
     }
 
-    public function getResDateEnd(): ?\DateTimeInterface
+    public function getDateEnd(): ?\DateTimeInterface
     {
         return $this->date_end;
     }
 
-    public function setResDateEnd(\DateTimeInterface $date_end): self
+    public function setDateEnd(\DateTimeInterface $date_end): self
     {
         $this->date_end = $date_end;
 
         return $this;
     }
 
-    public function getResPrice(): ?int
+    public function getPrice(): ?int
     {
         return $this->price;
     }
 
-    public function setResPrice(int $price): self
+    public function setPrice(int $price): self
     {
         $this->price = $price;
 
         return $this;
     }
 
-    public function getResPaymentDate(): ?\DateTimeInterface
+    public function getPaymentDate(): ?\DateTimeInterface
     {
         return $this->payment_date;
     }
 
-    public function setResPaymentDate(?\DateTimeInterface $payment_date): self
+    public function setPaymentDate(?\DateTimeInterface $payment_date): self
     {
         $this->payment_date = $payment_date;
 
@@ -138,12 +137,12 @@ class Reservation
         return $this;
     }
 
-    public function getSeason(): ?season
+    public function getSeason(): ?Season
     {
         return $this->season;
     }
 
-    public function setSeason(?season $season): self
+    public function setSeason(?Season $season): self
     {
         $this->season = $season;
 
