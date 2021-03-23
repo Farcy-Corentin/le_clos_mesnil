@@ -13,6 +13,8 @@ class ReservationFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
+        // on genere une fixture Season
+        // on met les saisons dans un tableau
         $seasons = [];
         for ($i = 1; $i <= 10; $i++) {
             $faker = Factory::create();
@@ -24,14 +26,16 @@ class ReservationFixtures extends Fixture
             $manager->persist($season);
             $seasons[] = $season;
         }
-
+        // On genere la fixtures Reservation
         for ($i = 1; $i <= 10; $i++) {
             $faker = Factory::create();
+            // on va chercher l'user dans la fixture User
             $user = $this->getReference('user_' . $faker->numberBetween(1, 20));
             $reservation = new Reservation();
-            // champs users_id
+            // champs users_id 
             $reservation->setUsers($user);
             // champs season_id
+            // on recuperer la season_id au dessus
             $reservation->setSeason($seasons[random_int(1, 9)]);
             $reservation->setDate($faker->dateTime);
             $reservation->setDateStart($faker->dateTime);
