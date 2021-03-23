@@ -20,7 +20,6 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            CountryFixtures::class,
             UserFixtures::class,
             ReservationFixtures::class,
         ];
