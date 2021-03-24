@@ -4,14 +4,25 @@ namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use App\DataFixtures\UserFixtures;
+use App\DataFixtures\ReservationFixtures;
+use App\DataFixtures\PostFixtures;
 
-class AppFixtures extends Fixture
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+
+class AppFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        // $product = new Product();
-        // $manager->persist($product);
-
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            UserFixtures::class,
+            ReservationFixtures::class,
+            PostFixtures::class
+        ];
     }
 }

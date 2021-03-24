@@ -21,27 +21,27 @@ class Reservation
     /**
      * @ORM\Column(type="datetime")
      */
-    private ?\DateTimeInterface $res_date;
+    private ?\DateTimeInterface $date;
 
     /**
      * @ORM\Column(type="date")
      */
-    private ?\DateTimeInterface $res_date_start;
+    private ?\DateTimeInterface $date_start;
 
     /**
      * @ORM\Column(type="date")
      */
-    private ?\DateTimeInterface $res_date_end;
+    private ?\DateTimeInterface $date_end;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private ?int $res_price;
+    private ?int $price;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private ?\DateTimeInterface $res_payment_date;
+    private ?\DateTimeInterface $payment_date;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reservations")
@@ -50,15 +50,14 @@ class Reservation
     private ?User $users;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Season::class, inversedBy="season")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private ?season $season;
-
-    /**
      * @ORM\OneToOne(targetEntity=CommentReservation::class, mappedBy="reservation", cascade={"persist", "remove"})
      */
     private ?Commentreservation $commentReservation;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Season::class, inversedBy="reservations")
+     */
+    private $season;
 
 
     public function getId(): ?int
@@ -66,62 +65,62 @@ class Reservation
         return $this->id;
     }
 
-    public function getResDate(): ?\DateTimeInterface
+    public function getDate(): ?\DateTimeInterface
     {
-        return $this->res_date;
+        return $this->date;
     }
 
-    public function setResDate(\DateTimeInterface $res_date): self
+    public function setDate(\DateTimeInterface $date): self
     {
-        $this->res_date = $res_date;
+        $this->date = $date;
 
         return $this;
     }
 
-    public function getResDateStart(): ?\DateTimeInterface
+    public function getDateStart(): ?\DateTimeInterface
     {
-        return $this->res_date_start;
+        return $this->date_start;
     }
 
-    public function setResDateStart(\DateTimeInterface $res_date_start): self
+    public function setDateStart(\DateTimeInterface $date_start): self
     {
-        $this->res_date_start = $res_date_start;
+        $this->date_start = $date_start;
 
         return $this;
     }
 
-    public function getResDateEnd(): ?\DateTimeInterface
+    public function getDateEnd(): ?\DateTimeInterface
     {
-        return $this->res_date_end;
+        return $this->date_end;
     }
 
-    public function setResDateEnd(\DateTimeInterface $res_date_end): self
+    public function setDateEnd(\DateTimeInterface $date_end): self
     {
-        $this->res_date_end = $res_date_end;
+        $this->date_end = $date_end;
 
         return $this;
     }
 
-    public function getResPrice(): ?int
+    public function getPrice(): ?int
     {
-        return $this->res_price;
+        return $this->price;
     }
 
-    public function setResPrice(int $res_price): self
+    public function setPrice(int $price): self
     {
-        $this->res_price = $res_price;
+        $this->price = $price;
 
         return $this;
     }
 
-    public function getResPaymentDate(): ?\DateTimeInterface
+    public function getPaymentDate(): ?\DateTimeInterface
     {
-        return $this->res_payment_date;
+        return $this->payment_date;
     }
 
-    public function setResPaymentDate(?\DateTimeInterface $res_payment_date): self
+    public function setPaymentDate(?\DateTimeInterface $payment_date): self
     {
-        $this->res_payment_date = $res_payment_date;
+        $this->payment_date = $payment_date;
 
         return $this;
     }
@@ -138,12 +137,12 @@ class Reservation
         return $this;
     }
 
-    public function getSeason(): ?season
+    public function getSeason(): ?Season
     {
         return $this->season;
     }
 
-    public function setSeason(?season $season): self
+    public function setSeason(?Season $season): self
     {
         $this->season = $season;
 

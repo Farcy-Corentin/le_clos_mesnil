@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=CountryRepository::class)
  * attributes={
- *     "order"={"cou_name":"DESC"}
+ *     "order"={"name":"DESC"}
  *     },
  *     normalizationContext={"groups"={"read":"countries"}},
  *     collectionOperations={"get","post"},
@@ -22,65 +22,69 @@ class Country
 {
     /**
      * @ORM\Id
-     * @ORM\Column(type="string", length=2)
+     * @ORM\GeneratedValue
+     * @ORM\Column(name="id", type="bigint")
      * @Groups({"read":"categories"})
      */
-    private ?string $id;
+    private ?int $id;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     * @Groups({"read":"categories"})
+     */
+    private ?string $name;
 
     /**
      * @ORM\Column(type="string", length=45)
      * @Groups({"read":"categories"})
      */
-    private ?string $cou_name;
+    private ?string $english_name;
 
     /**
-     * @ORM\Column(type="string", length=45)
-     * @Groups({"read":"categories"})
-     */
-    private ?string $cou_english_name;
-
-    /**
-     * @ORM\OneToMany(targetEntity="User", mappedBy="country")
+     * @ORM\OneToMany(targetEntity="User", mappedBy="Country")
      * @return Collection
      * @Groups({"read":"categories"})
      */
     private Collection $users;
 
+    /**
+     * Constructeur
+     */
     public function __construct()
     {
         $this->users = new ArrayCollection();
     }
 
-    public function getId(): ?string
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(string $id): ?string
+    public function setId(string $id): ?int
     {
         return $this->id = $id;
     }
 
-    public function getCouName(): ?string
+    public function getName(): ?string
     {
-        return $this->cou_name;
+        return $this->name;
     }
 
-    public function setCouName(string $cou_name): self
+    public function setName(string $name): self
     {
-        $this->cou_name = $cou_name;
+        $this->name = $name;
 
         return $this;
     }
 
-    public function getCouEnglishName(): ?string
+    public function getEnglishName(): ?string
     {
-        return $this->cou_english_name;
+        return $this->english_name;
     }
 
-    public function setCouEnglishName(string $cou_english_name): self
+    public function setEnglishName(string $english_name): self
     {
-        $this->cou_english_name = $cou_english_name;
+        $this->english_name = $english_name;
 
         return $this;
     }
@@ -103,5 +107,3 @@ class Country
         return $this;
     }
 }
-
-

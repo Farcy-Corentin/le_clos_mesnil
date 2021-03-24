@@ -22,12 +22,12 @@ class Equipment
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private ?string $equ_name;
+    private ?string $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private ?string $equ_description;
+    private ?string $description;
 
     /**
      * @ORM\ManyToMany(targetEntity=Room::class, inversedBy="equipment")
@@ -37,12 +37,12 @@ class Equipment
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private ?string $equ_english_name;
+    private ?string $english_name;
 
     /**
      * @ORM\Column(type="text")
      */
-    private ?string $equ_english_description;
+    private ?string $english_description;
 
     public function __construct()
     {
@@ -56,24 +56,24 @@ class Equipment
 
     public function getEquName(): ?string
     {
-        return $this->equ_name;
+        return $this->name;
     }
 
-    public function setEquName(string $equ_name): self
+    public function setEquName(string $name): self
     {
-        $this->equ_name = $equ_name;
+        $this->name = $name;
 
         return $this;
     }
 
     public function getEquDescription(): ?string
     {
-        return $this->equ_description;
+        return $this->description;
     }
 
-    public function setEquDescription(?string $equ_description): self
+    public function setEquDescription(?string $description): self
     {
-        $this->equ_description = $equ_description;
+        $this->description = $description;
 
         return $this;
     }
@@ -104,24 +104,24 @@ class Equipment
 
     public function getEquEnglishName(): ?string
     {
-        return $this->equ_english_name;
+        return $this->english_name;
     }
 
-    public function setEquEnglishName(string $equ_english_name): self
+    public function setEquEnglishName(string $english_name): self
     {
-        $this->equ_english_name = $equ_english_name;
+        $this->english_name = $english_name;
 
         return $this;
     }
 
     public function getEquEnglishDescription(): ?string
     {
-        return $this->equ_english_description;
+        return $this->english_description;
     }
 
-    public function setEquEnglishDescription(string $equ_english_description): self
+    public function setEquEnglishDescription(string $english_description): self
     {
-        $this->equ_english_description = $equ_english_description;
+        $this->english_description = $english_description;
 
         return $this;
     }

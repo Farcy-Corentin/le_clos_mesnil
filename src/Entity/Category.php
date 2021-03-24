@@ -34,7 +34,7 @@ class Category
      * @ORM\Column(type="string", length=50)
      * @Groups({"read":"categories"})
      */
-    private ?string $cat_name;
+    private ?string $name;
 
     /**
      * @ORM\OneToMany(targetEntity=Post::class, mappedBy="category")
@@ -42,11 +42,11 @@ class Category
      */
     private Collection $posts;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="category")
-     * @Groups({"read":"categories"})
-     */
-    private ?Category $cat_parent;
+    // /**
+    //  * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="category")
+    //  * @Groups({"read":"categories"})
+    //  */
+    // private ?Category $parent;
 
     public function __construct()
     {
@@ -58,14 +58,14 @@ class Category
         return $this->id;
     }
 
-    public function getCatName(): ?string
+    public function getName(): ?string
     {
-        return $this->cat_name;
+        return $this->name;
     }
 
-    public function setCatName(string $cat_name): self
+    public function setName(string $name): self
     {
-        $this->cat_name = $cat_name;
+        $this->name = $name;
 
         return $this;
     }
@@ -100,15 +100,15 @@ class Category
         return $this;
     }
 
-    public function getCatParentId(): ?self
-    {
-        return $this->cat_parent;
-    }
+    // public function getParentId(): ?self
+    // {
+    //     return $this->parent;
+    // }
 
-    public function setCatParentId(?self $cat_parent): self
-    {
-        $this->cat_parent = $cat_parent;
+    // public function setParentId(?self $parent): self
+    // {
+    //     $this->parent = $parent;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }
