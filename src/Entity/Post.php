@@ -7,6 +7,7 @@ use App\Repository\PostRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use DateTimeImmutable;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 
@@ -50,16 +51,16 @@ class Post
     private ?string $title;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="boolean", length=20)
      * @Groups({"read:post", "update:post"})
      */
-    private ?string $status;
+    private ?bool $status;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="boolean", length=20)
      * @Groups({"read:post", "update:post"})
      */
-    private ?string $comment_status;
+    private ?bool $comment_status;
 
     /**
      * @ORM\Column(type="string", length=200)
@@ -94,6 +95,7 @@ class Post
     private ?\DateTimeInterface $update_date;
 
     /**
+     * @var \DateTimeImmutable
      * @ORM\Column(type="datetime")
      * @Groups({"read:post", "update:post"})
      */
@@ -109,79 +111,83 @@ class Post
         return $this->id;
     }
 
-    public function setPostDate(\DateTimeInterface $date): self
+    public function getDate(): ?\DateTimeInterface
     {
-        $this->$date = $date;
+        return $this->date;
+    }
 
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
         return $this;
     }
 
-    public function getPostContent(): ?string
+    public function getContent(): ?string
     {
         return $this->content;
     }
 
-    public function setPostContent(string $content): self
+    public function setContent(string $content): self
     {
         $this->content = $content;
 
         return $this;
     }
 
-    public function getPostTitle(): ?string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    public function setPostTitle(string $title): self
+    public function setTitle(string $title): self
     {
         $this->title = $title;
 
         return $this;
     }
 
-    public function getPostStatus(): ?string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    public function setPostStatus(string $status): self
+    public function setStatus(string $status): self
     {
         $this->status = $status;
 
         return $this;
     }
 
-    public function getPostCommentStatus(): ?string
+    public function getCommentStatus(): ?string
     {
         return $this->comment_status;
     }
 
-    public function setPostCommentStatus(string $comment_status): self
+    public function setCommentStatus(string $comment_status): self
     {
         $this->comment_status = $comment_status;
 
         return $this;
     }
 
-    public function getPostName(): ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setPostName(string $name): self
+    public function setName(string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getPostCommentCount(): ?string
+    public function getCommentCount(): ?string
     {
         return $this->comment_count;
     }
 
-    public function setPostCommentCount(string $comment_count): self
+    public function setCommentCount(string $comment_count): self
     {
         $this->comment_count = $comment_count;
 
@@ -230,20 +236,15 @@ class Post
         return $this;
     }
 
-    public function getPostUpdateDate(): ?\DateTimeInterface
+    public function getUpdateDate(): ?\DateTimeInterface
     {
         return $this->update_date;
     }
 
-    public function setPostUpdateDate(?\DateTimeInterface $update_date): self
+    public function setUpdateDate(?\DateTimeInterface $update_date): self
     {
         $this->update_date = $update_date;
 
         return $this;
-    }
-
-    public function getPostDate(): ?\DateTimeInterface
-    {
-        return $this->date;
     }
 }

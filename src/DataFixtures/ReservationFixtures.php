@@ -4,7 +4,6 @@ namespace App\DataFixtures;
 
 use App\Entity\Reservation;
 use App\Entity\Season;
-use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
