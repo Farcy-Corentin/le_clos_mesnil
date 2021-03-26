@@ -7,6 +7,7 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -20,6 +21,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     collectionOperations={"get","post"},
  *     itemOperations={"get","delete","put","patch"}
  *     )
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 #[ApiResource]
 class User implements UserInterface
@@ -62,7 +64,7 @@ class User implements UserInterface
     private ?string $password;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      * @Groups({"read":"users"})
      */
     private ?\DateTimeInterface $createAt;
@@ -93,13 +95,13 @@ class User implements UserInterface
     private Collection $commentPost;
 
     /**
-     * @ORM\Column(type="string", length=200)
+     * @ORM\Column(type="string", length=200, nullable=true)
      * @Groups({"read":"users"})
      */
     private ?string $url;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, nullable=true)
      * @Groups({"read":"users"})
      */
     private ?string $ip;
@@ -111,10 +113,21 @@ class User implements UserInterface
      */
     private array $roles = [];
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isVerified = false;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $activation_token;
+
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
         $this->commentPost = new ArrayCollection();
+        // $this->email = new ArrayCollection();
     }
 
 
@@ -152,7 +165,7 @@ class User implements UserInterface
         return $this->email;
     }
 
-    public function setUseMail(string $email): self
+    public function setEmail(string $email): self
     {
         $this->email = $email;
 
@@ -190,6 +203,7 @@ class User implements UserInterface
 
     public function setCreateAt(\DateTimeInterface $createAt): self
     {
+
         $this->createAt = $createAt;
 
         return $this;
@@ -361,5 +375,29 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getActivationToken(): ?string
+    {
+        return $this->activation_token;
+    }
+
+    public function setActivationToken(?string $activation_token): self
+    {
+        $this->activation_token = $activation_token;
+
+        return $this;
     }
 }

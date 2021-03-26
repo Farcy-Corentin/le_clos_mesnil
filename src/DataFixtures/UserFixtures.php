@@ -32,7 +32,7 @@ class UserFixtures extends Fixture
 
         for ($nbUsers = 1; $nbUsers <= 30; $nbUsers++) {
             $user = new User();
-            $user->setUseMail($faker->email);
+            $user->setEmail($faker->email);
             if ($nbUsers === 1)
                 $user->setRoles(['ROLE_ADMIN']);
             else
@@ -42,7 +42,7 @@ class UserFixtures extends Fixture
             $user->setPhone($faker->e164PhoneNumber);
             $user->setFirstname($faker->firstName);
             $user->setUrl($faker->url);
-            $user->setCreateAt($faker->dateTime);
+            $user->setCreatedAt($faker->dateTime);
             $user->setIp($faker->ipv4);
             $user->setCountry($countries[random_int(1, 30)]);
             $manager->persist($user);
