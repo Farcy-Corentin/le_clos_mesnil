@@ -42,13 +42,13 @@ class RegistrationController extends AbstractController
             );
             // on genere le token d'activation_token
             $user->setActivationToken(md5(uniqid()));
-
+            $user->setRoles(['ROLE_USER']);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // generate a signed url and email it to the user
+
             $this->emailVerifier->sendEmailConfirmation(
                 'app_verify_email',
                 $user,
@@ -58,6 +58,8 @@ class RegistrationController extends AbstractController
                     ->subject('Please Confirm your Email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
+
+
             // do anything else you need here, like send an email
 
             return $guardHandler->authenticateUserAndHandleSuccess(

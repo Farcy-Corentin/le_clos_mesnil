@@ -20,15 +20,15 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        $countries = [];
+        // $countries = [];
         $faker = Factory::create('fr_FR');
-        for ($i = 0; $i <= 30; $i++) {
-            $country = new Country();
-            $country->setName($faker->country);
-            $country->setEnglishName($faker->countryCode);
-            $manager->persist($country);
-            $countries[] = $country;
-        }
+        // for ($i = 0; $i <= 30; $i++) {
+        //     $country = new Country();
+        //     $country->setName($faker->country);
+        //     $country->setEnglishName($faker->countryCode);
+        //     $manager->persist($country);
+        //     $countries[] = $country;
+        // }
 
         for ($nbUsers = 1; $nbUsers <= 30; $nbUsers++) {
             $user = new User();
@@ -41,10 +41,7 @@ class UserFixtures extends Fixture
             $user->setLastName($faker->lastName);
             $user->setPhone($faker->e164PhoneNumber);
             $user->setFirstname($faker->firstName);
-            $user->setUrl($faker->url);
-            $user->setCreatedAt($faker->dateTime);
-            $user->setIp($faker->ipv4);
-            $user->setCountry($countries[random_int(1, 30)]);
+            $user->setCreateAt($faker->dateTime);
             $manager->persist($user);
 
             // Enregistre l'utilisateur dans une référence

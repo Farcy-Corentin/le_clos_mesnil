@@ -41,18 +41,10 @@ class Country
     private ?string $english_name;
 
     /**
-     * @ORM\OneToMany(targetEntity="User", mappedBy="Country")
-     * @return Collection
-     * @Groups({"read":"categories"})
-     */
-    private Collection $users;
-
-    /**
      * Constructeur
      */
     public function __construct()
     {
-        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -85,24 +77,6 @@ class Country
     public function setEnglishName(string $english_name): self
     {
         $this->english_name = $english_name;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->setCountry($this);
-        }
 
         return $this;
     }

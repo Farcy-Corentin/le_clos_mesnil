@@ -76,13 +76,6 @@ class User implements UserInterface
     private ?\DateTimeInterface $updateDate;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Country", inversedBy="user")
-     * @ORM\JoinColumn(nullable=false)
-     * @Groups({"read":"users"})
-     */
-    private ?country $country;
-
-    /**
      * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="users")
      * @Groups({"read":"users"})
      */
@@ -94,17 +87,6 @@ class User implements UserInterface
      */
     private Collection $commentPost;
 
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     * @Groups({"read":"users"})
-     */
-    private ?string $url;
-
-    /**
-     * @ORM\Column(type="string", length=100, nullable=true)
-     * @Groups({"read":"users"})
-     */
-    private ?string $ip;
 
     private ?string $pseudo;
 
@@ -221,17 +203,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getCountry(): ?Country
-    {
-        return $this->country;
-    }
-
-    public function setCountry(?country $country): self
-    {
-        $this->country = $country;
-
-        return $this;
-    }
 
     /**
      * @return Collection
@@ -289,30 +260,6 @@ class User implements UserInterface
                 $commentPost->setUser(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getUrl(): ?string
-    {
-        return $this->url;
-    }
-
-    public function setUrl(string $url): self
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    public function getIp(): ?string
-    {
-        return $this->ip;
-    }
-
-    public function setIp(string $ip): self
-    {
-        $this->ip = $ip;
 
         return $this;
     }

@@ -21,7 +21,7 @@ class RegistrationFormType extends AbstractType
             ->add('first_name')
             ->add('email')
             ->add('phone')
-            ->add('country')
+
 
 
             // ->add('update_date')
