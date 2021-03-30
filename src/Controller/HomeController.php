@@ -17,18 +17,8 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        $country = $this->getDoctrine()->getRepository(Country::class)->findOneById('FR');
-        return $this->render('pages/home.html.twig', [
-            "country" => $country
-        ]);
+
+        return $this->render('pages/home.html.twig');
     }
 
-    public function getIp(): Response
-    {
-        $name = 'corentin';
-        return $this->render('pages/home.html.twig', [
-            "name" => $name
-        ]);
-        // return $ip;
-    }
 }
